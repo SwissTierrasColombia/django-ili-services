@@ -1,0 +1,37 @@
+version: '3.9'
+
+networks:
+    default:
+        name: ceicol-network
+        external: true
+
+services:
+    ili_checker_django:
+        image: 'django_ili_checker_app'
+        build: ../.
+        restart: on-failure
+        ports:
+            - ${DJANGO_API_PORT}:8000
+        environment:
+            - NAME_SU=${NAME_SU}
+            - EMAIL_SU=${EMAIL_SU}
+              # app db connection parameters
+            - PASSWORD_SU=${PASSWORD_SU}
+            - PG_USER=${PG_USER}
+            - PG_PASSWORD=${PG_PASSWORD}
+            - PG_DB=${PG_DB}
+            - PG_PORT=${PG_PORT}
+            - PG_HOST=${PG_HOST}
+              # validations db connection parameters
+            - ILISERVICES_DB_NAME=${ILISERVICES_DB_NAME}
+            - ILISERVICES_DB_USER=${ILISERVICES_DB_USER}
+            - ILISERVICES_DB_PASS=${ILISERVICES_DB_PASS}
+            - ILISERVICES_DB_PORT=${ILISERVICES_DB_PORT}
+            - ILISERVICES_DB_HOST=${ILISERVICES_DB_HOST}
+        volumes:
+            # Certs SSL
+            - ${LETSENCRYPT_CERT_DIR}:/certs
+            - ${ATTACHMENTS_PATH_VOLUME}:/app/local_storage
+            # set timezone local in container
+            - /etc/timezone:/etc/timezone:ro
+            - /etc/localtime:/etc/localtime:ro

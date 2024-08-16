@@ -1,0 +1,12 @@
+Django
+django-cors-headers
+djangorestframework
+django-filter
+djangorestframework-simplejwt[crypto]
+python-magic
+python-dotenv
+fpdf
+whitenoise
+gunicorn
+tzdata
+psycopg2-binary

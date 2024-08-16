@@ -1,0 +1,3 @@
+[submodule "ili_checker_app/submodules"]
+	path = ili_checker_app/submodules
+	url = https://github.com/ceicol/ili-services.git
