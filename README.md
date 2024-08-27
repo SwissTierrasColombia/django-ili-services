@@ -3,7 +3,7 @@
 ### Clone repository
 
 ```bash
-git clone --recurse-submodules https://github.com/ceicol/django-ili-services.git
+git clone --recurse-submodules https://github.com/swisstierrascolombia/django-ili-services.git
 ```
 
 ### Create an environment
